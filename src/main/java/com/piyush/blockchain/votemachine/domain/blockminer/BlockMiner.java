@@ -42,7 +42,7 @@ public class BlockMiner {
         if(previousBlock !=null) {
             return  previousBlock.getBlockNumber()+1;
         } else  {
-            return 0;
+            return 1;
         }
     }
 

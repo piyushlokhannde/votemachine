@@ -2,13 +2,14 @@ package com.piyush.blockchain.votemachine.domain.votingmahcine;
 
 import com.piyush.blockchain.votemachine.domain.blockminer.VotingData;
 import com.piyush.blockchain.votemachine.domain.processingunit.InvalidVotingDatException;
+import com.piyush.blockchain.votemachine.domain.processingunit.ProcessedVote;
 import com.piyush.blockchain.votemachine.domain.processingunit.ProcessingUnit;
-import com.piyush.blockchain.votemachine.domain.votingmahcine.Candidate;
-import com.piyush.blockchain.votemachine.domain.votingmahcine.MachineConfig;
 import lombok.Getter;
+
 
 import java.security.PublicKey;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 public class VotingMachine {
@@ -31,22 +32,23 @@ public class VotingMachine {
 
 
 
-    public boolean addVote(VotingData votingData)  throws InvalidVotingDatException {
+    public ProcessedVote addVote(VotingData votingData)  throws InvalidVotingDatException {
 
-       /* if(votingData.getCandidateId().equals(null) || !isCandidateExists(votingData.getCandidateId())) {
+       if(Objects.isNull(votingData.getCandidateId()) || !isCandidateExists(votingData.getCandidateId())) {
             throw new InvalidVotingDatException(String
-                    .format("Candidate with id %s does not exists", votingData.getCandidateId().intValue()));
+                    .format("Candidate with id %s does not exists", votingData.getCandidateId()));
         }
 
-        if(votingData.getMachineId().equals(null) || !machineNumber.equals(votingData.getMachineId())) {
+        if(Objects.isNull(votingData.getMachineId()) || machineNumber != Integer.valueOf(votingData.getMachineId())) {
             throw new InvalidVotingDatException(String
                     .format("Machine with id %s does not exists", votingData.getMachineId()));
-        }*/
-        return false;//processingUnit.processVote(votingData);
+        }
+        return processingUnit.processVote(votingData, publicKey);
     }
 
 
-    private boolean isCandidateExists(int candidiateId) {
-        return this.candidates.stream().anyMatch(s -> s.getCandidateId() == candidiateId);
+    private boolean isCandidateExists(String candidiateId) {
+        Integer canID = Integer.valueOf(candidiateId);
+        return this.candidates.stream().anyMatch(s -> s.getCandidateId() == canID);
     }
 }

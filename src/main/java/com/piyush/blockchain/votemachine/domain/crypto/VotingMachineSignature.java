@@ -3,9 +3,14 @@ package com.piyush.blockchain.votemachine.domain.crypto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.security.*;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.util.Base64;
 
 public class VotingMachineSignature {
 
@@ -45,7 +50,54 @@ public class VotingMachineSignature {
     }
 
 
+    public PrivateKey getPrivateKey(String privateKeyString) {
+        try {
+            byte[] keyBytes = privateKeyString.getBytes();
+            PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
+            KeyFactory kf = KeyFactory.getInstance("RSA");
+            return kf.generatePrivate(spec);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
+    }
+
+    public String encrytMessage(String msg, PublicKey publicKey) {
+        if(publicKey == null) {
+            return msg;
+        }
+        String encryptMsg = null;
+        try {
+
+            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+            encryptMsg =  Base64.getEncoder().encodeToString(cipher.doFinal(msg.getBytes()));
+        } catch (InvalidKeyException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (BadPaddingException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (IllegalBlockSizeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+        return  encryptMsg;
+
+    }
+
+
+    public String decryptMessage(String encrptedMsg, PrivateKey privateKey) {
+        String decryptMsg = null;
+        try {
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
+            decryptMsg = new String(cipher.doFinal(Base64.getDecoder().decode(encrptedMsg.getBytes())));
+        } catch (InvalidKeyException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (BadPaddingException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (IllegalBlockSizeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        return  decryptMsg;
+    }
 
 
 

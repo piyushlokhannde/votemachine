@@ -67,7 +67,7 @@ public class BlockMinerTest {
         Block block2 = blockMiner.mineBock(votingData2, block1, ApplicationDate.INSTANCE.getApplicationTime());
         String secondHash = block2.getHash();
 
-        assertThat(secondHash,  is(equalTo("0d0562d6cbb4b048b02922f395e6e87c30cb7e4a79526a0c7266fe3583166ef3")));
+        assertThat(secondHash,  is(equalTo("00b3acfb556de1fec406776b37797df2ff148302fe56dd7fe5254bc9e53a6310")));
 
     }
 
@@ -98,9 +98,9 @@ public class BlockMinerTest {
         Block block3 = blockMiner.mineBock(votingData3, block2, ApplicationDate.INSTANCE.getApplicationTime());
 
 
-        assertThat(block1.getBlockNumber(), is(equalTo(0)));
-        assertThat(block2.getBlockNumber(), is(equalTo(1)));
-        assertThat(block3.getBlockNumber(), is(equalTo(2)));
+        assertThat(block1.getBlockNumber(), is(equalTo(1)));
+        assertThat(block2.getBlockNumber(), is(equalTo(2)));
+        assertThat(block3.getBlockNumber(), is(equalTo(3)));
 
 
     }

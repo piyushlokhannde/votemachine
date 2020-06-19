@@ -4,10 +4,13 @@ import com.piyush.blockchain.votemachine.domain.*;
 import com.piyush.blockchain.votemachine.domain.blockminer.Block;
 import com.piyush.blockchain.votemachine.domain.blockminer.BlockMiner;
 import com.piyush.blockchain.votemachine.domain.blockminer.VotingData;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class ProcessingUnit {
 
@@ -23,7 +26,7 @@ public class ProcessingUnit {
         this.machineId = Integer.valueOf(machineNumber).toString();
         this.blockPersister = blockPersister;
         VotingData votingData = VotingData.getBlockChainVotingData(0, machineNumber);
-        processVote(votingData, null);
+      //  processVote(votingData, null);
     }
 
     public ProcessedVote processVote(VotingData votingData, PublicKey publicKey) {
@@ -42,13 +45,20 @@ public class ProcessingUnit {
 
     public ProcessedVote getLatestBlock() {
        Block block = blockPersister.getLatestBlock();
-        return ProcessedVote.of(block.getPreviousHash(),
-                this.machineId, block.getNonce(),
-                block.getTimeStamp(), block.getHash(), block.getBlockNumber(), block.getBlockCode(), block.isValidBlock());
+
+       if(Objects.nonNull(block)) {
+           return ProcessedVote.of(block.getPreviousHash(),
+                   this.machineId, block.getNonce(),
+                   block.getTimeStamp(), block.getHash(), block.getBlockNumber(), block.getBlockCode(), block.isValidBlock());
+       } else  {
+           return  null;
+       }
+
+
     }
 
 
-    public ProcessedVote validateVote(ValidateVoteInput validateVoteInput, PublicKey publicKey) throws  InvalidVotingDatException {
+    public ProcessedVote validateVote(ValidateVoteInput validateVoteInput) throws  InvalidVotingDatException {
         validateMachineNumber(validateVoteInput);
         validateBlockNumber(validateVoteInput.getBlockNumber());
         validateBlocKCode(validateVoteInput.getBlockNumber(), validateVoteInput.getBlockCode());

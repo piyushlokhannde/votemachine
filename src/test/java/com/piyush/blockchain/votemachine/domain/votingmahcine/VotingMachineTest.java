@@ -4,9 +4,7 @@ package com.piyush.blockchain.votemachine.domain.votingmahcine;
 import com.piyush.blockchain.votemachine.domain.ApplicationDate;
 import com.piyush.blockchain.votemachine.domain.blockminer.BlockMiner;
 import com.piyush.blockchain.votemachine.domain.blockminer.VotingData;
-import com.piyush.blockchain.votemachine.domain.processingunit.BlockPersister;
-import com.piyush.blockchain.votemachine.domain.processingunit.InvalidVotingDatException;
-import com.piyush.blockchain.votemachine.domain.processingunit.ProcessingUnit;
+import com.piyush.blockchain.votemachine.domain.processingunit.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,7 +32,7 @@ public class VotingMachineTest {
        ApplicationDate.INSTANCE.setFixedTime(fixedTime);
        machineConfig = new MachineConfigForTest();
        BlockMiner blockMiner = new BlockMiner(machineConfig.getDifficulty());
-       blockPersister = new BlockPersister();
+       blockPersister = new InMemoryblockPersister();
        processingUnit =  new ProcessingUnit(blockMiner, machineConfig.getMachineNumber(), blockPersister);
        votingMachine =  new VotingMachine(machineConfig, processingUnit);
     }
@@ -71,10 +69,10 @@ public class VotingMachineTest {
     @Test
     public void testAddVoteToVotingMachine() throws InvalidVotingDatException {
         VotingData votingData = VotingData.getBlockChainVotingData(2, machineConfig.getMachineNumber());
-        boolean isVoteAdded  = votingMachine.addVote(votingData);
-        String latestHash = null;//processingUnit.getLatestHash();
-        assertThat(isVoteAdded, is(equalTo(true)));
-        assertThat(latestHash, is(equalTo("0f96844c51d621787a4f784ea39e1aadc5f37fd7aa226e6337cf7690d3f81b6e")));
+        ProcessedVote processedVote = votingMachine.addVote(votingData);
+        String latestHash = processedVote.getHash();
+        assertThat(processedVote, notNullValue());
+        assertThat(latestHash, is(equalTo("005a9a2ae1d3af8581301e2348fd94b0c939e2a516a4a8798d4fd09b08c2944e")));
     }
 
 

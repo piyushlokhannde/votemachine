@@ -20,6 +20,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 
 public class ProcessingUnitTest {
 
@@ -37,7 +38,7 @@ public class ProcessingUnitTest {
         VotingMachineSignature votingMachineSignature = new VotingMachineSignature();
         publicKey = votingMachineSignature.getPublicKey();
         privateKey = votingMachineSignature.getPrivateKey();
-        BlockPersister blockPersister = new BlockPersister();
+        BlockPersister blockPersister = new InMemoryblockPersister();
         processingUnit =  new ProcessingUnit(blockMiner, machineNumber, blockPersister);
     }
 
@@ -46,8 +47,7 @@ public class ProcessingUnitTest {
     @Test
     public void testInitialBlockForProcessingUnit() {
         ProcessedVote processedVote = processingUnit.getLatestBlock();
-        int blockNumber  = processedVote.getBlockNumber();
-        assertThat(blockNumber, is(equalTo(0)));
+        assertThat(processedVote, is(nullValue()));
     }
 
 
@@ -58,7 +58,7 @@ public class ProcessingUnitTest {
         String latestHash = vote.getHash();
         assertThat(vote.getBlockNumber(), is(equalTo(1)));
         assertThat(latestHash,
-                is(equalTo("08cfb873ad0638e636e2dc49377a05e35f54c5a1847c6b12396e24027c432704")));
+                is(equalTo("0432878175f32dbbb1d1aa6fe4b5be9c67a5167b1e4e90f3b612b1ae8b971a58")));
         assertThat(vote.getBlockNumber(), is(IsNull.notNullValue()));
     }
 
@@ -69,7 +69,7 @@ public class ProcessingUnitTest {
         exception.expectMessage(INVALID_VOTE_DATA_MSG);
         ValidateVoteInput validateVoteInput = ValidateVoteInput.of("2",
                 "1", "1", 1);
-        processingUnit.validateVote(validateVoteInput, publicKey);
+        processingUnit.validateVote(validateVoteInput);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class ProcessingUnitTest {
         exception.expectMessage(INVALID_VOTE_DATA_MSG);
         ValidateVoteInput validateVoteInput = ValidateVoteInput.of("1",
                 "3", "1", 1);
-        processingUnit.validateVote(validateVoteInput, publicKey);
+        processingUnit.validateVote(validateVoteInput);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class ProcessingUnitTest {
         exception.expectMessage(INVALID_VOTE_DATA_MSG);
         ValidateVoteInput validateVoteInput = ValidateVoteInput.of("1",
                 "1", "1", 1);
-        processingUnit.validateVote(validateVoteInput, publicKey);
+        processingUnit.validateVote(validateVoteInput);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class ProcessingUnitTest {
 
         ValidateVoteInput validateVoteInput = ValidateVoteInput.of("1",
                 "1", "2", vote.getBlockCode());
-        ProcessedVote validationVote =  processingUnit.validateVote(validateVoteInput, publicKey);
+        ProcessedVote validationVote =  processingUnit.validateVote(validateVoteInput);
         assertThat(vote.getTimeStamp(), is(equalTo(validationVote.getTimeStamp())));
         assertThat(vote.getPreviousHash(), is(equalTo(validationVote.getPreviousHash())));
         assertThat(vote.getNonce(), is(not(equalTo(validationVote.getNonce()))));
@@ -118,7 +118,7 @@ public class ProcessingUnitTest {
 
         ValidateVoteInput validateVoteInput = ValidateVoteInput.of("1",
                 "1", "1", vote.getBlockCode());
-        ProcessedVote validationVote =  processingUnit.validateVote(validateVoteInput, publicKey);
+        ProcessedVote validationVote =  processingUnit.validateVote(validateVoteInput);
         assertThat(vote.getTimeStamp(), is(equalTo(validationVote.getTimeStamp())));
         assertThat(vote.getPreviousHash(), is(equalTo(validationVote.getPreviousHash())));
         assertThat(vote.getNonce(), is(equalTo(validationVote.getNonce())));
@@ -157,7 +157,7 @@ public class ProcessingUnitTest {
 
         VotingStats votingStats = processingUnit.findVotingStats();
 
-        assertThat(votingStats.getTotalVotes(), is(equalTo(4L)));
+        assertThat(votingStats.getTotalVotes(), is(equalTo(3L)));
         assertThat(votingStats.getValidatedVotes(), is(equalTo(2L)));
 
     }

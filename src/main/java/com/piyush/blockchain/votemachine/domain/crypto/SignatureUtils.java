@@ -54,7 +54,6 @@ public abstract class SignatureUtils {
 
             cipher.init(Cipher.ENCRYPT_MODE, publicKey);
             return Base64.getEncoder().encodeToString(cipher.doFinal(msg.getBytes()));
-
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         } catch (BadPaddingException e) {
