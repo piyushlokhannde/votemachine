@@ -104,6 +104,7 @@ public class BlockPersisterDAO implements BlockPersister {
                localDateTime, blockData.getBlockNumber() , blockData.getBlockCode());
         block.setValidBlock(blockData.getValidBlock());
         block.setHash(blockData.getHash());
+        block.setNonce(blockData.getNonce());
         return block;
 
     }

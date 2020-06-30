@@ -8,7 +8,8 @@ public class VoteCount {
 
     Map<String, Integer> map = new HashMap<>();
 
-    public Integer getTotalVotesForCandidate(String candidiateID) {
+    public Integer
+    getTotalVotesForCandidate(String candidiateID) {
         return map.get(candidiateID);
     }
 

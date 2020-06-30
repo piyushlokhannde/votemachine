@@ -10,6 +10,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 public class VotingMachineSignature {
@@ -52,10 +53,10 @@ public class VotingMachineSignature {
 
     public PrivateKey getPrivateKey(String privateKeyString) {
         try {
-            byte[] keyBytes = privateKeyString.getBytes();
-            PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
-            KeyFactory kf = KeyFactory.getInstance("RSA");
-            return kf.generatePrivate(spec);
+
+           PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKeyString));
+           KeyFactory kf = KeyFactory.getInstance("RSA");
+           return kf.generatePrivate(spec);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

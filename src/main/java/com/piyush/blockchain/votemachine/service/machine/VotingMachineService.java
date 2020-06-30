@@ -1,4 +1,4 @@
-package com.piyush.blockchain.votemachine.service;
+package com.piyush.blockchain.votemachine.service.machine;
 
 
 

@@ -6,7 +6,7 @@ import com.piyush.blockchain.votemachine.domain.blockminer.VotingData;
 import com.piyush.blockchain.votemachine.domain.processingunit.ProcessedVote;
 import com.piyush.blockchain.votemachine.domain.processingunit.ValidateVoteInput;
 import com.piyush.blockchain.votemachine.domain.processingunit.VotingStats;
-import com.piyush.blockchain.votemachine.service.VotingMachineService;
+import com.piyush.blockchain.votemachine.service.machine.VotingMachineService;
 import com.piyush.blockchain.votemachine.service.validation.VoteValidator;
 import org.junit.Before;
 import org.junit.Test;

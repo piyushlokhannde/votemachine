@@ -18,7 +18,7 @@ public class VoteCounter {
     private Function<String, ProcessingUnit> processingUnitBeanFactory;
 
     @Autowired
-    VotingMachineSignature votingMachineSignature;
+    private VotingMachineSignature votingMachineSignature;
 
     public VoteCount countVotes(String machineNumber, String privateKey) {
         return processingUnitBeanFactory.apply(machineNumber)

@@ -1,6 +1,5 @@
 package com.piyush.blockchain.votemachine.domain.blockminer;
 
-import java.security.PublicKey;
 
 public interface VotingData {
 
@@ -11,7 +10,4 @@ public interface VotingData {
         return new BlockChainVotingData(candidateId, machineNumber);
     }
 
-    static VotingData getBlockChainEncryptedData(VotingData votingData, PublicKey publicKey) {
-       return  new BlockChainVotingEncryptedData(votingData, publicKey);
-    }
 }

@@ -4,7 +4,7 @@ import com.piyush.blockchain.votemachine.dao.BlockPersisterDAO;
 import com.piyush.blockchain.votemachine.domain.blockminer.Block;
 import com.piyush.blockchain.votemachine.domain.blockminer.VotingData;
 import com.piyush.blockchain.votemachine.domain.processingunit.ProcessedVote;
-import com.piyush.blockchain.votemachine.service.VotingMachineService;
+import com.piyush.blockchain.votemachine.service.machine.VotingMachineService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

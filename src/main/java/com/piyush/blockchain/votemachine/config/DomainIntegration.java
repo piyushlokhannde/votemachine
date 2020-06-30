@@ -40,12 +40,6 @@ public class DomainIntegration {
     }
 
 
-   // @Bean
-   // public Function<String, BlockMiner> blockMinerBeanFactory() {
-   //     return machineNumber -> getBlockMiner(machineNumber);
-   // }
-
-
     @Bean
     @Scope(value = "prototype")
     public BlockMiner getBlockMiner(String machineNumber) {
