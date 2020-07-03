@@ -6,12 +6,11 @@ import com.piyush.blockchain.votemachine.controller.validation.data.BlockValidRe
 import com.piyush.blockchain.votemachine.controller.validation.data.ValidateVoteInputRequest;
 import com.piyush.blockchain.votemachine.domain.processingunit.ProcessedVote;
 import com.piyush.blockchain.votemachine.domain.processingunit.ValidateVoteInput;
+import com.piyush.blockchain.votemachine.domain.processingunit.VotingStats;
 import com.piyush.blockchain.votemachine.service.validation.VoteValidator;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class VoteValidatorController {
@@ -35,6 +34,11 @@ public class VoteValidatorController {
         voteValidator.markBlockValid(request.getBlockNumber(), request.getBlockCode(), request.getMachineNumber());
     }
 
+
+    @GetMapping(path="vote/stats/{machineNumber}",  produces = "application/json")
+    public VotingStats getVotingStats(@PathVariable("machineNumber") String machineNumber) {
+        return  voteValidator.findVotingStats(machineNumber);
+    }
 
 
 }

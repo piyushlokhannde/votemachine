@@ -2,13 +2,11 @@ package com.piyush.blockchain.votemachine.controller.counter;
 
 
 import com.piyush.blockchain.votemachine.domain.processingunit.VoteCount;
+import com.piyush.blockchain.votemachine.domain.processingunit.VotingStats;
 import com.piyush.blockchain.votemachine.service.counter.VoteCounter;
 import com.piyush.blockchain.votemachine.service.counter.data.CountVotesRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class VoteCounterController {
@@ -28,4 +26,6 @@ public class VoteCounterController {
                                          @PathVariable("blockNumber") Integer blockNumber) {
         return  voteCounter.countVotesForTillBlock(request.getMachineNumber(), request.getPrivateKey(), blockNumber);
     }
+
+
 }

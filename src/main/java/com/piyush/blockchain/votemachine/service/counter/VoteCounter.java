@@ -30,4 +30,6 @@ public class VoteCounter {
         return this.processingUnitBeanFactory.apply(machineNumber)
                 .countVotesForTillBlock(votingMachineSignature.getPrivateKey(privateKey), blockNumber);
     }
+
+
 }

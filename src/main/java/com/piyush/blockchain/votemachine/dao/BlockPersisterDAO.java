@@ -55,7 +55,7 @@ public class BlockPersisterDAO implements BlockPersister {
         query.addCriteria(Criteria.where(BLOCK_NUMBER).is(Integer.valueOf(blockNumber)));
         List<BlockData> blockDataList =  mongoTemplate.find(query, BlockData.class);
         return blockDataList
-                .stream().findFirst().map(blockData1 ->convertToBlock(blockData1)).get();
+                .stream().findFirst().map(blockData1 ->convertToBlock(blockData1)).orElse(null);
     }
 
     @Override

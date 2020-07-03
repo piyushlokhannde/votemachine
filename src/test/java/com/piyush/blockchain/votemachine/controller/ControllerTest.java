@@ -27,7 +27,7 @@ public class ControllerTest {
     protected int port;
 
 
-    protected Map<Integer, VotingDataResponse> resultVotingResponse = new HashMap<>();
+    protected static Map<Integer, VotingDataResponse> resultVotingResponse = new HashMap<>();
 
 
     protected RestTemplate restTemplate = new RestTemplate();
@@ -41,10 +41,7 @@ public class ControllerTest {
     }
 
 
-    @Before
-    public void init() {
-        resultVotingResponse.clear();
-    }
+
 
 
 

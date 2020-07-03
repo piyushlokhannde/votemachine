@@ -20,7 +20,7 @@ public class VoteValidator {
     public ProcessedVote validateVote(ValidateVoteInput validateVoteInput)  {
         try {
             return  processingUnitBeanFactory.apply(validateVoteInput.getMachineNumber()).validateVote(validateVoteInput);
-        } catch (InvalidVotingDatException e) {
+        } catch (Exception e) {
            log.error(e.getMessage());
            throw  new RuntimeException(e.getMessage());
         }

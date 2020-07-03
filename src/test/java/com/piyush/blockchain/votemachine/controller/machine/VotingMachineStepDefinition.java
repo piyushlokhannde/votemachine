@@ -4,7 +4,7 @@ import com.piyush.blockchain.votemachine.controller.ControllerTest;
 import com.piyush.blockchain.votemachine.controller.machine.data.VotingDataRequest;
 import com.piyush.blockchain.votemachine.controller.machine.data.VotingDataResponse;
 import com.piyush.blockchain.votemachine.domain.blockminer.Block;
-import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -18,12 +18,14 @@ import java.util.List;
 import static com.piyush.blockchain.votemachine.domain.TestUtil.machineNumber;
 
 @Slf4j
-public class VotingMachineStepDefinition  extends ControllerTest{
+public class VotingMachineStepDefinition  extends ControllerTest {
 
-
+    @Before
+    public void init() {
+        resultVotingResponse.clear();
+    }
 
     @Given("^there are no votes in the machine$")
-    @Test
     public void thereAreNoVotesInTheMachine()  {
         blockPersisterDAO.clearAllData();
     }
