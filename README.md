@@ -11,3 +11,5 @@ With the help of cryptography and blockachiain data structure, we can improve on
 The example presented here is an CEVM , based on the cryptography and  blockachiain data structure to demonstrate the implementation of the confidentiality, validation and integrity
 
 # Use Case Scenario Overview: Crypto-EVM
+
+![alt text](CEVM_use_case_diagram.jpg)
