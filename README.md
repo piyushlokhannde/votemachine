@@ -8,4 +8,6 @@ Any voting system should have the following characteristics.
 
 Although the current voting system(EVM) take cares of the confidentiality but hardly any thing for Validation and Integrity.
 With the help of cryptography and blockachiain data structure, we can improve on the validation and integrity of the EVM's
-The example presented here is an EVM , based on the cryptography and  blockachiain data structure to demonstrate the implementation of the confidentiality, validation and integrity
+The example presented here is an CEVM , based on the cryptography and  blockachiain data structure to demonstrate the implementation of the confidentiality, validation and integrity
+
+# Use Case Scenario Overview: Crypto-EVM
