@@ -1,2 +1,8 @@
 # Voting Machine
-Voting Machine based on cryptography
+EVM based on cryptography
+
+Any voting system should have the following characteristics.
+1) **confidentiality:** System should be confidential about the voter and there choices.
+2) **Validation:** Voter should be able to validate the choices they made.
+3) **Integrity:** Once all the choces are made, their should not be any temporing of the data recoreded in the system.
+
