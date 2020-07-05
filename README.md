@@ -1,2 +1,2 @@
-# votemachine
-voting machine based on cryptography
+# Voting Machine
+Voting Machine based on cryptography
