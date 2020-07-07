@@ -20,3 +20,14 @@ The example presented here is an CEVM , based on the cryptography and  blockachi
 # Use Case Scenario Overview: Crypto-EVM
 
 ![alt text](CEVM_use_case_diagram.jpg)
+
+**Use Case of CEVM:**
+1) Voter should be able to vote for candidate for his/her choice. After vote recorded in CEVM, it should return the following metadata about the choice made by the cotter
+     Hash of the previous block.
+     Identity of the machine where choice is recorded.
+     Nonce value for calculating hash.
+     Time when the vote is recorded;
+     Current hash of the block;
+     Block Number of the block generated;
+     Block Code, four digit code used by the voter, to validate the block in future.
+     Block Valid,  value indicating if the current vote is valid.
