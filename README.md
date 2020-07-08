@@ -1,4 +1,4 @@
-# Voting Machine
+# Crypto-EVM
 EVM based on cryptography
 
 Any voting system should have the following characteristics.
