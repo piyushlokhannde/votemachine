@@ -41,3 +41,5 @@ The example presented here is an CEVM , based on the cryptography and  blockachi
 3) After validating the block in the use case 2. User will mark the block as valid. System will change the property of the block isBlockValid =true
 4) Voter can see the status of the blockchain for the machine. System will return the total validated votes and total votes for the system  
 5)  Only authorized entity can count the vote by supplying the private key for the machine. System will return the votes per candidate. System should also provide the vote count till certain blocks.
+
+# Testing and Running the Applicaion:
