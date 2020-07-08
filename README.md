@@ -46,7 +46,7 @@ The example presented here is an CEVM , based on the cryptography and  blockachi
 Following steps are to run the appliction.
 
 1)  Install mongodb from the link https://docs.mongodb.com/manual/administration/install-community/ and start the database.
-2) Run the java clas [VotemachineApplication.java](src/main/java/com/bid/chaincode/VotemachineApplication.java) 
+2) Run the java clas [VotemachineApplication.java](src/main/java/com/piyush/blockchain/votemachine/VotemachineApplication.java) 
 
 The spring boot appliction will start on the port 8080. We can exeute the following scenarios.
 
