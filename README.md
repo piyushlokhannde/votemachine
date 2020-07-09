@@ -68,25 +68,122 @@ Response: {
               "blockCode": 639,
               "blockValid": false
           }
+Database: [Database View after completion](img/request1.png)           
 ```
 ```yaml
 Scenario: Voter cast cast the vote for candidate 2
-	  http://localhost:8080/vote
-Request: {
-"candidateId":2,
-"machineId":1
-}
+	      http://localhost:8080/vote
+Request:  {
+            "candidateId":2,
+            "machineId":1
+          }
 Response: {
-"previousHash": "00005130679645122f139dab17c3f1e16691e1ac6ce1755949929a455c5caa80",
-"machineNumber": "1",
-"nonce": 29,
-"timeStamp": "2020-07-08T23:09:59.177",
-"hash": "00be53c76067ceae15703398c7cb5ffe61c917b4b6b6eab86b81ca385854ef3b",
-"blockCode": 229,
-"blockValid": false
-}
+            "previousHash": "00005130679645122f139dab17c3f1e16691e1ac6ce1755949929a455c5caa80",
+            "machineNumber": "1",
+            "nonce": 29,
+            "timeStamp": "2020-07-08T23:09:59.177",
+            "hash": "00be53c76067ceae15703398c7cb5ffe61c917b4b6b6eab86b81ca385854ef3b",
+            "blockCode": 229,
+            "blockValid": false
+          }
+Database: [Database View after completion](img/request2.png)
+```
+```yaml
+Scenario: Validate the block 2 with valid candidate id
+          http://localhost:8080/vote/valid/block
+Request:  {
+           "blockNumber":2,
+           "machineNumber":"1",
+           "candidateVote":2,
+           "blockCode":229
+          }
+Response: {
+              "previousHash": "00005130679645122f139dab17c3f1e16691e1ac6ce1755949929a455c5caa80",
+              "machineNumber": "1",
+              "nonce": 29,
+              "timeStamp": "2020-07-08T23:09:59.177",
+              "hash": "00be53c76067ceae15703398c7cb5ffe61c917b4b6b6eab86b81ca385854ef3b",
+              "blockNumber": 2,
+              "blockCode": 229,
+              "blockValid": false
+          }  
 ```
 
+```yaml
+Scenario: Validate the block 2 with Invalid candidate id
+          http://localhost:8080/vote/valid/block
+Request:  {
+           "blockNumber":2,
+           "machineNumber":"1",
+           "candidateVote":1,
+           "blockCode":229
+          }
+Response: {
+              "previousHash": "00005130679645122f139dab17c3f1e16691e1ac6ce1755949929a455c5caa80",
+              "machineNumber": "1",
+              "nonce": 25,
+              "timeStamp": "2020-07-08T23:09:59.177",
+              "hash": "009682278e671226683368efb054e22db279a55057881f50f30467becccfae8a",
+              "blockNumber": 2,
+              "blockCode": 229,
+              "blockValid": false
+          }  
+```
+```yaml
+Scenario: Mark the block 2 as valid
+          http://localhost:8080/vote/valid/block
+Request:  {
+           "blockNumber":"2",
+           "machineNumber":"1",
+           "blockCode":229 
+          }
+Response: Void
+``` 
 
+```yaml
+Scenario: Check the valiation stats for the machine
+          http://localhost:8080/vote/stats/1
+Request: None
+Response: {
+              "totalVotes": 2,
+              "validatedVotes": 1
+          }
+Database: [Database View after completion](img/request5.png)          
+``` 
 
+```yaml
+Scenario: Count the votes from machine number 1
+          http://localhost:8080/vote/count
+Request:  {
+         
+              "machineNumber":"1",        
+              "privateKey":"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALfFpliXF+MtRHakKgSLl0XZQMNViIKR6rmhCS7vF85/3xanwg8pxFqgfqX1wxG9fto3YuAsZE4HriqQJjyAYNAccC5YdYS8dAuBIX0O5VNz9Sz0pDxYPfoIsEA8uNm9aXFrezslQp3t5aE4wik/D14zYrHK4OeQZKZOmRu5fT89AgMBAAECgYBdhyAT8kHcAsvXPdGMoqaIi/sj7sIdAbpeYxDTbCfHltipJRPkt7MRFKGgQSXYP4Lx+EJAKRebhtkjHF35aLTcF7Rz3CnYR8pDaBMPdSM8/+WsGS9deC2zIn1lCNHcitH2YNReZA/jyNz19Cs5sVHxJAMwrU4uKsQUTD0nR+s+QQJBAPFKX5S1msymOmXvpr23oM7QUem9HGWY/5jYiU2E8rIeMWA93KVyEZYPM6Rg6P0aGRHD5hRu8vqamqGZLXJ/lwkCQQDC+aHgBwtnUZOAjOJtV1+TLcJKgQYSBvc2Omv93vU1FuVU8m8e29zZwiTPRUiSy+mM+qHk54tN4ryCykToPl+VAkEAxvRCN4Y+q7vsrxyZ6hi9OYo/4HEUNxmet1Lkc8zJqOCIagjYJHsX0RmbxVA7DGc2gJV84yBQrR5JnjGFbcGSsQJASCOEuRbiKUANiyqVPE9vlU0A7f/+9vyMywuimTO9Ff96qotogcpnVEp4xBemWmoH55lz/PWOnSqfBOVByYwKYQJAbVp8aIZrRnltyig62iygU0WLiqiFcMiC9UxAohc5y8vKVusj+UNQwkRa00TcmMTwy7I4jveLAtB0ms/MZLCjsQ=="
+          
+          }
+Response: {
+              "map": {
+                  "1": 1,
+                  "2": 1
+              }
+          }
+``` 
 
+```yaml
+Scenario: Count the votes from machine number 1 till block 1
+          http://localhost:8080/vote/count/1
+Request:  {
+         
+              "machineNumber":"1",        
+              "privateKey":"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALfFpliXF+MtRHakKgSLl0XZQMNViIKR6rmhCS7vF85/3xanwg8pxFqgfqX1wxG9fto3YuAsZE4HriqQJjyAYNAccC5YdYS8dAuBIX0O5VNz9Sz0pDxYPfoIsEA8uNm9aXFrezslQp3t5aE4wik/D14zYrHK4OeQZKZOmRu5fT89AgMBAAECgYBdhyAT8kHcAsvXPdGMoqaIi/sj7sIdAbpeYxDTbCfHltipJRPkt7MRFKGgQSXYP4Lx+EJAKRebhtkjHF35aLTcF7Rz3CnYR8pDaBMPdSM8/+WsGS9deC2zIn1lCNHcitH2YNReZA/jyNz19Cs5sVHxJAMwrU4uKsQUTD0nR+s+QQJBAPFKX5S1msymOmXvpr23oM7QUem9HGWY/5jYiU2E8rIeMWA93KVyEZYPM6Rg6P0aGRHD5hRu8vqamqGZLXJ/lwkCQQDC+aHgBwtnUZOAjOJtV1+TLcJKgQYSBvc2Omv93vU1FuVU8m8e29zZwiTPRUiSy+mM+qHk54tN4ryCykToPl+VAkEAxvRCN4Y+q7vsrxyZ6hi9OYo/4HEUNxmet1Lkc8zJqOCIagjYJHsX0RmbxVA7DGc2gJV84yBQrR5JnjGFbcGSsQJASCOEuRbiKUANiyqVPE9vlU0A7f/+9vyMywuimTO9Ff96qotogcpnVEp4xBemWmoH55lz/PWOnSqfBOVByYwKYQJAbVp8aIZrRnltyig62iygU0WLiqiFcMiC9UxAohc5y8vKVusj+UNQwkRa00TcmMTwy7I4jveLAtB0ms/MZLCjsQ=="
+          
+          }
+Response: {
+              "map": {
+                  "1": 1
+              }
+          }
+``` 
+```yaml
+Post man collection for the application: https://www.getpostman.com/collections/6bf622dfa9ec6fea193c
+
+``` 
