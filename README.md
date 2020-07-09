@@ -19,7 +19,7 @@ The example presented here is an CEVM , based on the cryptography and  blockachi
 
 # Use Case Scenario Overview: Crypto-EVM
 
-![alt text](CEVM_use_case_diagram.jpg)
+![alt text](img/CEVM_use_case_diagram.jpg)
 
 **Use Case of CEVM:**
 1) Voter should be able to vote for candidate for his/her choice. After vote recorded in CEVM, it should return the following metadata about the choice made by the cotter </br>
