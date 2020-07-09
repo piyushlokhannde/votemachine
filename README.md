@@ -68,5 +68,25 @@ Response: {
               "blockCode": 639,
               "blockValid": false
           }
-          
-'''
+```
+```yaml
+Scenario: Voter cast cast the vote for candidate 2
+Request:  {
+    	      "candidateId":2,
+              "machineId":1
+          }
+Response: {
+	      "previousHash": "00005130679645122f139dab17c3f1e16691e1ac6ce1755949929a455c5caa80",
+	      "machineNumber": "1",
+	      "nonce": 29,
+	      "timeStamp": "2020-07-08T23:09:59.177",
+	      "hash": "00be53c76067ceae15703398c7cb5ffe61c917b4b6b6eab86b81ca385854ef3b",
+	      "blockNumber": 2,
+	      "blockCode": 229,
+	      "blockValid": false
+	  }
+
+
+
+
+
