@@ -42,11 +42,31 @@ The example presented here is an CEVM , based on the cryptography and  blockachi
 4) Voter can see the status of the blockchain for the machine. System will return the total validated votes and total votes for the system  
 5)  Only authorized entity can count the vote by supplying the private key for the machine. System will return the votes per candidate. System should also provide the vote count till certain blocks.
 
-# Testing and Running the Applicaion:
+# Testing and Running the Application:
 Following steps are to run the appliction.
 
 1)  Install mongodb from the link https://docs.mongodb.com/manual/administration/install-community/ and start the database.
-2) Run the java clas [VotemachineApplication.java](src/main/java/com/piyush/blockchain/votemachine/VotemachineApplication.java) 
+2) Run the java class [VotemachineApplication.java](src/main/java/com/piyush/blockchain/votemachine/VotemachineApplication.java) 
 
-The spring boot appliction will start on the port 8080. We can exeute the following scenarios.
+The spring boot application will start on the port 8080. We can execute the following scenarios.
 
+```yaml
+Scenario: Voter cast cast the vote for candidate 1
+          http://localhost:8080/vote
+Request:  {
+              "candidateId":1,
+              "machineId":1
+          }   
+                 
+Response: {
+              "previousHash": "",
+              "machineNumber": "1",
+              "nonce": 47,
+              "timeStamp": "2020-07-08T23:07:16.585",
+              "hash": "00005130679645122f139dab17c3f1e16691e1ac6ce1755949929a455c5caa80",
+              "blockNumber": 1,
+              "blockCode": 639,
+              "blockValid": false
+          }
+          
+'''
