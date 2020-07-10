@@ -214,8 +214,9 @@ Post man collection for the application: https://www.getpostman.com/collections/
 1)  [machine Test](src/test/java/com/piyush/blockchain/votemachine/controller/machine) 
 1)  [validation Test](src/test/java/com/piyush/blockchain/votemachine/controller/validation) 
 
-
-
+# Improvments:
+1) Add other comoponets such voter identifer, machine config (setup  candidate list, machine primary/public key).
+2) Extend the the idea to online voting. Voting from phone.
 
 
 
