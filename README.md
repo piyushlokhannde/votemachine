@@ -189,3 +189,6 @@ Post man collection for the application: https://www.getpostman.com/collections/
 ``` 
 # Crypto-EVM: Architecture
 ![alt text](img/architecture.png)
+
+# Crypto-EVM: Component/Package diagram
+![alt text](img/component.png)
