@@ -192,3 +192,15 @@ Post man collection for the application: https://www.getpostman.com/collections/
 
 # Crypto-EVM: Component/Package diagram
 ![alt text](img/component.png)
+
+# Crypto-EVM: Tests
+![alt text](img/component.png)
+
+## Domain Tests:
+1) [blockminer Test](src/test/java/com/piyush/blockchain/votemachine/domain/blockminer) 
+2) [processingunit Test](src/test/java/com/piyush/blockchain/votemachine/domain/processingunit) 
+3) [votingmahcine Test](src/test/java/com/piyush/blockchain/votemachine/domain/votingmahcine) 
+
+
+
+
