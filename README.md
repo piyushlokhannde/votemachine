@@ -194,8 +194,6 @@ Post man collection for the application: https://www.getpostman.com/collections/
 ![alt text](img/component.png)
 
 # Crypto-EVM: Tests
-![alt text](img/component.png)
-
 **Domain Tests:**
 1) [blockminer Test](src/test/java/com/piyush/blockchain/votemachine/domain/blockminer) 
 2) [processingunit Test](src/test/java/com/piyush/blockchain/votemachine/domain/processingunit) 
@@ -209,7 +207,7 @@ Post man collection for the application: https://www.getpostman.com/collections/
 **DAO Tests :**
 1) [BlockPersisterDAOTest.java Test](src/test/java/com/piyush/blockchain/votemachine/dao/BlockPersisterDAOTest.java) 
 
-** BDD/Controller Tests:**
+**BDD/Controller Tests:**
 1)  [counter Test](src/test/java/com/piyush/blockchain/votemachine/controller/counter) 
 1)  [machine Test](src/test/java/com/piyush/blockchain/votemachine/controller/machine) 
 1)  [validation Test](src/test/java/com/piyush/blockchain/votemachine/controller/validation) 
