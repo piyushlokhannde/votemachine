@@ -187,3 +187,5 @@ Response: {
 Post man collection for the application: https://www.getpostman.com/collections/6bf622dfa9ec6fea193c
 
 ``` 
+# Crypto-EVM: Architecture
+![alt text](img/architecture.png)
