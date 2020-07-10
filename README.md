@@ -196,20 +196,20 @@ Post man collection for the application: https://www.getpostman.com/collections/
 # Crypto-EVM: Tests
 ![alt text](img/component.png)
 
-## Domain Tests:
+** Domain Tests:**
 1) [blockminer Test](src/test/java/com/piyush/blockchain/votemachine/domain/blockminer) 
 2) [processingunit Test](src/test/java/com/piyush/blockchain/votemachine/domain/processingunit) 
 3) [votingmahcine Test](src/test/java/com/piyush/blockchain/votemachine/domain/votingmahcine) 
 
-## Service Tests:
+** Service Tests:**
 1) [counter Test](src/test/java/com/piyush/blockchain/votemachine/service/counter) 
 2) [validator Test](src/test/java/com/piyush/blockchain/votemachine/service/validator) 
 3) [votingmachine Test](src/test/java/com/piyush/blockchain/votemachine/service/votingmachine) 
 
-## DAO Tests:
+** DAO Tests:**
 1) [BlockPersisterDAOTest.java Test](src/test/java/com/piyush/blockchain/votemachine/dao/BlockPersisterDAOTest.java) 
 
-## BDD/Controller Tests:
+** BDD/Controller Tests:**
 1)  [counter Test](src/test/java/com/piyush/blockchain/votemachine/controller/counter) 
 1)  [machine Test](src/test/java/com/piyush/blockchain/votemachine/controller/machine) 
 1)  [validation Test](src/test/java/com/piyush/blockchain/votemachine/controller/validation) 
