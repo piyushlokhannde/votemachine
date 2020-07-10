@@ -201,6 +201,18 @@ Post man collection for the application: https://www.getpostman.com/collections/
 2) [processingunit Test](src/test/java/com/piyush/blockchain/votemachine/domain/processingunit) 
 3) [votingmahcine Test](src/test/java/com/piyush/blockchain/votemachine/domain/votingmahcine) 
 
+## Service Tests:
+1) [counter Test](src/test/java/com/piyush/blockchain/votemachine/service/counter) 
+2) [validator Test](src/test/java/com/piyush/blockchain/votemachine/service/validator) 
+3) [votingmachine Test](src/test/java/com/piyush/blockchain/votemachine/service/votingmachine) 
+
+## DAO Tests:
+[counter Test](src/test/java/com/piyush/blockchain/votemachine/dao/BlockPersisterDAOTest.java) 
+
+
+
+
+
 
 
 
