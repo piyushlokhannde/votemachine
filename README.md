@@ -207,8 +207,12 @@ Post man collection for the application: https://www.getpostman.com/collections/
 3) [votingmachine Test](src/test/java/com/piyush/blockchain/votemachine/service/votingmachine) 
 
 ## DAO Tests:
-[counter Test](src/test/java/com/piyush/blockchain/votemachine/dao/BlockPersisterDAOTest.java) 
+1) [BlockPersisterDAOTest.java Test](src/test/java/com/piyush/blockchain/votemachine/dao/BlockPersisterDAOTest.java) 
 
+## BDD/Controller Tests:
+1)  [counter Test](src/test/java/com/piyush/blockchain/votemachine/controller/counter) 
+1)  [machine Test](src/test/java/com/piyush/blockchain/votemachine/controller/machine) 
+1)  [validation Test](src/test/java/com/piyush/blockchain/votemachine/controller/validation) 
 
 
 
