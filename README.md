@@ -45,6 +45,12 @@ The example presented here is an EVM based on the cryptography and  blockachiain
 # Testing and Running the Application:
 Following steps are to run the appliction.
 
+**Assumptions Made while creating the application**
+1) User validation/security is excluded from the current POC.
+2) For the demo purpose, only two candidates (id=1 and id=2) is configured. For future extension we will have separate component to load candidates.
+3) Main component of the POC is domain. This component can be used in any offline and online system. 
+
+**Steps to run the application**
 1)  Install mongodb from the link https://docs.mongodb.com/manual/administration/install-community/ and start the database.
 2) Run the java class [VotemachineApplication.java](src/main/java/com/piyush/blockchain/votemachine/VotemachineApplication.java) 
 
