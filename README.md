@@ -42,13 +42,13 @@ The example presented here is an EVM based on the cryptography and  blockachiain
 4) Voter can see the status of the validated votes for the machine. System will return the total validated votes and total votes for the machine.  
 5) Only authorized entity can count the vote by supplying the private key for the machine. System will return the votes per candidate. System should also provide the vote count till certain blocks.
 
-# Testing and Running the Application:
-Following steps are to run the appliction.
+# Running the Application:
 
-**Assumptions Made while creating the application**
+**Assumptions made while creating the application**
 1) User validation/security is excluded from the current POC.
 2) For the demo purpose, only two candidates (id=1 and id=2) is configured. For future extension we will have separate component to load candidates.
-3) Main component of the POC is domain. This component can be used in any offline and online system. 
+3) Main component of the POC is domain. This component can be used in any offline and online system. For the demo purpose the current application is created using spring boot framework.
+
 
 **Steps to run the application**
 1)  Install mongodb from the link https://docs.mongodb.com/manual/administration/install-community/ and start the database.
